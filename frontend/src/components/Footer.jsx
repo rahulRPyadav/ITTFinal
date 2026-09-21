@@ -4,6 +4,7 @@ import {
   Phone, Mail, MapPin, MessageCircle, Heart, 
   Sparkles, ExternalLink, ShieldCheck, Compass, ArrowUp
 } from 'lucide-react';
+import logo from "../assets/logo.png"; // <-- Logo import kar liya gaya hai
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -22,11 +23,12 @@ const Footer = () => {
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-slate-800/80">
           
-          {/* Column 1: Company Profile */}
+          {/* Column 1: Company Profile with Logo */}
           <div className="space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-2xl bg-[#34A99D] flex items-center justify-center text-white font-black text-base shadow-md">
-                I
+              {/* Logo Image Replaced Here */}
+              <div className="w-10 h-10 rounded-2xl bg-white/10 p-1 flex items-center justify-center border border-slate-700 shadow-sm overflow-hidden shrink-0">
+                <img src={logo} alt="Ishika Tour & Travels Logo" className="w-full h-full object-contain" />
               </div>
               <span className="font-black text-lg text-white tracking-tight">Ishika Tour & Travels</span>
             </div>
@@ -143,12 +145,8 @@ const Footer = () => {
           
           {/* Copyright */}
           <p className="text-slate-400 font-medium">
-  © {new Date().getFullYear()}{" "}
-  
-    Ishika Tour & Travels
-
-  . All rights reserved.
-</p>
+            © {new Date().getFullYear()} Ishika Tour & Travels. All rights reserved.
+          </p>
 
           {/* Developer Portfolio Link */}
           <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-800 px-4 py-2 rounded-2xl shadow-xs">

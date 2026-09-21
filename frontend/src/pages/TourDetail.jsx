@@ -168,23 +168,40 @@ const TourDetail = () => {
               ✕
             </button>
 
-            {bookingSuccess ? (
-              <div className="text-center py-6">
-                <div className="bg-green-100 text-green-600 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle size={30} />
-                </div>
-                <h3 className="text-xl font-black text-slate-900 mb-2">Inquiry Submitted!</h3>
-                <p className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed">
-                  Ishika Tour & Travels team aapke request ko review karke best price quote ke saath contact karegi.
-                </p>
-                <button 
-                  onClick={() => { setShowBookingModal(false); setBookingSuccess(false); }}
-                  className="mt-6 bg-[#458393] hover:bg-[#34A99D] text-white px-8 py-3 rounded-xl text-xs font-black transition cursor-pointer"
-                >
-                  Close
-                </button>
-              </div>
-            ) : (
+          {bookingSuccess ? (
+  <div className="text-center py-6">
+    <div className="bg-green-100 text-green-600 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4">
+      <CheckCircle size={30} />
+    </div>
+
+    <h3 className="text-xl font-black text-slate-900 mb-2">
+      Inquiry Submitted!
+    </h3>
+
+    <p className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed">
+      Thank you for your inquiry. Our Ishika Tour & Travels team will review
+      your request and contact you with the best price.
+    </p>
+
+    {/* Review Section */}
+    <div className="bg-slate-50 rounded-xl p-4 mt-6">
+      <h4 className="text-sm font-black text-slate-900 mb-1">
+        Thank You
+      </h4>
+      <p className="text-slate-600 text-xs font-medium leading-relaxed">
+        After your tour, please share your experience and leave us a review.
+        Your feedback means a lot to us!
+      </p>
+    </div>
+
+    <button 
+      onClick={() => { setShowBookingModal(false); setBookingSuccess(false); }}
+      className="mt-6 bg-[#458393] hover:bg-[#34A99D] text-white px-8 py-3 rounded-xl text-xs font-black transition cursor-pointer"
+    >
+      Close
+    </button>
+  </div>
+) : (
               <div>
                 <h3 className="text-xl font-black text-slate-900 mb-1">Request Tour Quote</h3>
                 <p className="text-xs text-slate-500 mb-5 font-semibold truncate">{tour.title}</p>

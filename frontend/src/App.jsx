@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from './components/Navbar'; 
+import Footer from './components/Footer'; 
 import ScrollToTop from './components/ScrollToTop';
 
 // Pages
@@ -12,9 +12,11 @@ import TourDetail from './pages/TourDetail';
 import Contact from './pages/ContactUs';
 import Testimonials from './pages/Testimonials';
 
+
 const AppLayout = () => {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
+
 
   return (
     <>
@@ -30,14 +32,14 @@ const AppLayout = () => {
         <Route path="/tours/:slug" element={<TourDetail />} />
         <Route path="/contact" element={<Contact />} />
       
-     
       </Routes>
 
-      {/* Public Footer hides on Admin */}
       {!isAdminRoute && <Footer />}
     </>
   );
 };
+
+
 
 function App() {
   return (
@@ -46,5 +48,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;

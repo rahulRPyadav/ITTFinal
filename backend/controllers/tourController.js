@@ -32,7 +32,6 @@ exports.createTour = async (req, res) => {
   try {
     const { title, location, duration, city, image, description, inclusions } = req.body;
     
-    // Generate unique slug with random suffix to prevent duplicate errors
     const baseSlug = title ? title.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "").replace(/\s+/g, "-") : "tour";
     const slug = `${baseSlug}-${Date.now().toString().slice(-4)}`;
 
@@ -48,6 +47,35 @@ exports.createTour = async (req, res) => {
     });
 
     res.status(201).json({ success: true, data: newTour });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+// @desc Update Tour Package (YEH WALA ADD KAREIN)
+exports.updateTour = async (req, res) => {
+  try {
+    const { title, location, duration, city, image, description, inclusions } = req.body;
+    
+    const updatedTour = await Tour.findByIdAndUpdate(
+      req.params.id,
+      {
+        title,
+        location,
+        duration,
+        city: city || 'Jaipur',
+        image,
+        description,
+        inclusions: inclusions || []
+      },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedTour) {
+      return res.status(404).json({ success: false, message: 'Tour not found' });
+    }
+
+    res.status(200).json({ success: true, data: updatedTour });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

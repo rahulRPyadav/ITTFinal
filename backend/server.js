@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const bcrypt = require('bcryptjs');
 const connectDB = require('./config/db');
 const User = require('./models/User');
+const reviewRoutes = require('./routes/reviewRoutes');
 
 dotenv.config();
 connectDB();
@@ -47,6 +48,7 @@ app.get('/api/create-admin-now', async (req, res) => {
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/tours', require('./routes/tourRoutes'));
 app.use('/api/bookings', require('./routes/bookingRoutes'));
+app.use('/api/reviews', reviewRoutes);
 
 app.get('/', (req, res) => {
   res.send('🚀 Ishika Tour & Travels API is Live & Running...');
